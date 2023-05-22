@@ -32,5 +32,13 @@ namespace CourseWork
             filmCritics.ShowDialog();
             this.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Users users = new Users();
+            this.Hide();
+            users.ShowDialog();
+            this.Show();
+        }
     }
 }

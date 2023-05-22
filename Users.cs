@@ -11,23 +11,21 @@ using System.Data.SqlClient;
 
 namespace CourseWork
 {
-    public partial class FilmCritics : Form
+    public partial class Users : Form
     {
         DataBase dataBase = new DataBase();
         int selectedRow;
 
-        public FilmCritics()
+        public Users()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
         private void CreateColumns()
         {
-            dataGridView1.Columns.Add("id_critic", "id");
-            dataGridView1.Columns.Add("nickname_critic", "Никнейм");
-            dataGridView1.Columns.Add("numberOfReviews", "Количество рецензий");
-
+            dataGridView1.Columns.Add("id_user", "id");
+            dataGridView1.Columns.Add("nickname_user", "Никнейм");
+            dataGridView1.Columns.Add("age", "Возраст");
         }
 
         private void ReadSingleRow(DataGridView dgv, IDataRecord record)
@@ -37,15 +35,15 @@ namespace CourseWork
 
         private void ClearFields()
         {
-            textBoxIdCritic.Text = "";
-            textBoxNicknameCritic.Text = "";
-            textBoxNumReviews.Text = "";
+            textBoxIdUser.Text = "";
+            textBoxNicknameUser.Text = "";
+            textBoxAge.Text = "";
         }
 
         private void RefreshDataGrid(DataGridView dgw)
         {
             dgw.Rows.Clear();
-            string queryString = $"select * from Film_critics";
+            string queryString = $"select * from Users";
 
             SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
 
@@ -62,7 +60,7 @@ namespace CourseWork
             dataBase.closeConnection();
         }
 
-        private void FilmCritics_Load(object sender, EventArgs e)
+        private void FilmUsers_Load(object sender, EventArgs e)
         {
             CreateColumns();
             RefreshDataGrid(dataGridView1);
@@ -75,9 +73,9 @@ namespace CourseWork
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
 
-                textBoxIdCritic.Text = row.Cells[0].Value.ToString();
-                textBoxNicknameCritic.Text = row.Cells[1].Value.ToString();
-                textBoxNumReviews.Text = row.Cells[2].Value.ToString();
+                textBoxIdUser.Text = row.Cells[0].Value.ToString();
+                textBoxNicknameUser.Text = row.Cells[1].Value.ToString();
+                textBoxAge.Text = row.Cells[2].Value.ToString();
             }
         }
 
@@ -91,29 +89,36 @@ namespace CourseWork
         {
             dataBase.openConnection();
 
-            var nickameCritic = textBoxNicknameCritic.Text;
-            int numReviews = int.Parse(textBoxNumReviews.Text);
-
-            if (nickameCritic != string.Empty || numReviews.ToString() != string.Empty)
+            var nickameUser = textBoxNicknameUser.Text;
+            int ageUser = int.Parse(textBoxAge.Text);
+            
+            if(ageUser >= 6)
             {
-                try
+                if (nickameUser != string.Empty || ageUser.ToString() != string.Empty)
                 {
-                    var addQuery = $"insert into Film_critics (nickname_critic, numberOfReviews) values ('{nickameCritic}', '{numReviews}')";
+                    try
+                    {
+                        var addQuery = $"insert into Users (nickname_user, age) values ('{nickameUser}', '{ageUser}')";
 
-                    var command = new SqlCommand(addQuery, dataBase.getConnection());
-                    command.ExecuteNonQuery();
+                        var command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
 
-                    MessageBox.Show("Record successfully created!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Record successfully created!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Record not created!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Record not created!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Not all fields are filled in!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else
+            } else
             {
-                MessageBox.Show("Not all fields are filled in!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("The user must be over 6 years old!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
 
             dataBase.closeConnection();
             RefreshDataGrid(dataGridView1);
@@ -125,7 +130,7 @@ namespace CourseWork
         {
             dgw.Rows.Clear();
 
-            string searchingString = $"select * from Film_critics where concat (nickname_critic, numberOfReviews) like '%" + textBox_search.Text + "%'";
+            string searchingString = $"select * from Users where concat (nickname_user, age) like '%" + textBox_search.Text + "%'";
 
             SqlCommand command = new SqlCommand(searchingString, dataBase.getConnection());
             dataBase.openConnection();
@@ -150,8 +155,8 @@ namespace CourseWork
         {
             dataBase.openConnection();
 
-            var id = Convert.ToInt32(textBoxIdCritic.Text);
-            var deleteQuery = $"delete from Film_critics where id_critic = '{id}'";
+            var id = Convert.ToInt32(textBoxIdUser.Text);
+            var deleteQuery = $"delete from Users where id_user = '{id}'";
             var command = new SqlCommand(deleteQuery, dataBase.getConnection());
             command.ExecuteNonQuery();
 
@@ -163,31 +168,38 @@ namespace CourseWork
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(textBoxIdCritic.Text);
+            int id = Convert.ToInt32(textBoxIdUser.Text);
             dataBase.openConnection();
 
-            var nickameCritic = textBoxNicknameCritic.Text;
-            int numReviews = int.Parse(textBoxNumReviews.Text);
+            var nickameUser = textBoxNicknameUser.Text;
+            int age = int.Parse(textBoxAge.Text);
 
-            if (nickameCritic != string.Empty || numReviews.ToString() != string.Empty)
+            if (age >= 6)
             {
-                try
+                if (nickameUser != string.Empty || age.ToString() != string.Empty)
                 {
-                    var addQuery = $"update Film_critics set nickname_critic = '{nickameCritic}', numberOfReviews = '{numReviews}' where id_critic = '{id}'";
+                    try
+                    {
+                        var addQuery = $"update Users set nickname_user = '{nickameUser}', age = '{age}' where id_user = '{id}'";
 
-                    var command = new SqlCommand(addQuery, dataBase.getConnection());
-                    command.ExecuteNonQuery();
+                        var command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
 
-                    MessageBox.Show("Record successfully edited!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Record successfully created!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Record not edited!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Record not edited!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Not all fields are filled in!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Not all fields are filled in!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("The user must be over 6 years old!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             dataBase.closeConnection();
@@ -200,7 +212,7 @@ namespace CourseWork
             ClearFields();
         }
 
-        private void textBoxNumReviews_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxAge_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {

@@ -168,6 +168,7 @@ namespace CourseWork
 
             dataBase.closeConnection();
             RefreshDataGrid(dataGridView1);
+            MessageBox.Show("Record successfully deleted!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ClearFields();
         }
 

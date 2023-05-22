@@ -43,10 +43,9 @@ namespace CourseWork
             this.btnMovies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnMovies.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnMovies.Location = new System.Drawing.Point(11, 42);
-            this.btnMovies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMovies.Location = new System.Drawing.Point(16, 65);
             this.btnMovies.Name = "btnMovies";
-            this.btnMovies.Size = new System.Drawing.Size(153, 45);
+            this.btnMovies.Size = new System.Drawing.Size(230, 69);
             this.btnMovies.TabIndex = 1;
             this.btnMovies.Text = "Movies";
             this.btnMovies.UseVisualStyleBackColor = false;
@@ -58,10 +57,9 @@ namespace CourseWork
             this.btnCritics.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCritics.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCritics.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCritics.Location = new System.Drawing.Point(192, 42);
-            this.btnCritics.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCritics.Location = new System.Drawing.Point(288, 65);
             this.btnCritics.Name = "btnCritics";
-            this.btnCritics.Size = new System.Drawing.Size(153, 45);
+            this.btnCritics.Size = new System.Drawing.Size(230, 69);
             this.btnCritics.TabIndex = 2;
             this.btnCritics.Text = "Film critics";
             this.btnCritics.UseVisualStyleBackColor = false;
@@ -73,10 +71,9 @@ namespace CourseWork
             this.btnWatchings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWatchings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnWatchings.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnWatchings.Location = new System.Drawing.Point(11, 106);
-            this.btnWatchings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnWatchings.Location = new System.Drawing.Point(16, 163);
             this.btnWatchings.Name = "btnWatchings";
-            this.btnWatchings.Size = new System.Drawing.Size(153, 45);
+            this.btnWatchings.Size = new System.Drawing.Size(230, 69);
             this.btnWatchings.TabIndex = 3;
             this.btnWatchings.Text = "Watchings";
             this.btnWatchings.UseVisualStyleBackColor = false;
@@ -87,10 +84,9 @@ namespace CourseWork
             this.btnComments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnComments.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnComments.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnComments.Location = new System.Drawing.Point(192, 106);
-            this.btnComments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnComments.Location = new System.Drawing.Point(288, 163);
             this.btnComments.Name = "btnComments";
-            this.btnComments.Size = new System.Drawing.Size(153, 45);
+            this.btnComments.Size = new System.Drawing.Size(230, 69);
             this.btnComments.TabIndex = 4;
             this.btnComments.Text = "Comments";
             this.btnComments.UseVisualStyleBackColor = false;
@@ -99,10 +95,9 @@ namespace CourseWork
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(101, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(152, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 26);
+            this.label1.Size = new System.Drawing.Size(223, 37);
             this.label1.TabIndex = 5;
             this.label1.Text = "Select a table";
             // 
@@ -112,26 +107,25 @@ namespace CourseWork
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(11, 167);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(16, 257);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 45);
+            this.button1.Size = new System.Drawing.Size(230, 69);
             this.button1.TabIndex = 6;
             this.button1.Text = "Users";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 220);
+            this.ClientSize = new System.Drawing.Size(536, 338);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnComments);
             this.Controls.Add(this.btnWatchings);
             this.Controls.Add(this.btnCritics);
             this.Controls.Add(this.btnMovies);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Menu";
             this.Text = "Menu";
             this.ResumeLayout(false);
