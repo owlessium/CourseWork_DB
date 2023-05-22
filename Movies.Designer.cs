@@ -31,7 +31,7 @@ namespace CourseWork
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movies));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.PictureBox();
             this.btnRefresh = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,7 +58,7 @@ namespace CourseWork
             this.btnAdd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,34 +71,35 @@ namespace CourseWork
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textBox_search);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(765, 45);
             this.panel1.TabIndex = 0;
             // 
-            // pictureBox4
+            // btnBack
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(0, -8);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(72, 62);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.Location = new System.Drawing.Point(0, -8);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(72, 62);
+            this.btnBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnBack.TabIndex = 5;
+            this.btnBack.TabStop = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnClear
             // 
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(415, 3);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(67, 40);
             this.btnClear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -110,7 +111,7 @@ namespace CourseWork
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(486, 3);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(67, 38);
             this.btnRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,7 +123,7 @@ namespace CourseWork
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(557, 3);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(67, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -132,7 +133,7 @@ namespace CourseWork
             // textBox_search
             // 
             this.textBox_search.Location = new System.Drawing.Point(627, 7);
-            this.textBox_search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_search.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_search.Multiline = true;
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(137, 27);
@@ -156,7 +157,7 @@ namespace CourseWork
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(1, 50);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -181,7 +182,7 @@ namespace CourseWork
             this.panel2.Controls.Add(this.labelTitle);
             this.panel2.Controls.Add(this.pictureBox5);
             this.panel2.Location = new System.Drawing.Point(9, 402);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(421, 156);
             this.panel2.TabIndex = 2;
@@ -189,7 +190,7 @@ namespace CourseWork
             // textBoxGenre
             // 
             this.textBoxGenre.Location = new System.Drawing.Point(242, 100);
-            this.textBoxGenre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxGenre.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxGenre.Multiline = true;
             this.textBoxGenre.Name = "textBoxGenre";
             this.textBoxGenre.Size = new System.Drawing.Size(165, 22);
@@ -198,7 +199,7 @@ namespace CourseWork
             // textBoxDuration
             // 
             this.textBoxDuration.Location = new System.Drawing.Point(242, 124);
-            this.textBoxDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDuration.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDuration.Multiline = true;
             this.textBoxDuration.Name = "textBoxDuration";
             this.textBoxDuration.Size = new System.Drawing.Size(165, 22);
@@ -207,7 +208,7 @@ namespace CourseWork
             // textBoxTitle
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(242, 28);
-            this.textBoxTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTitle.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTitle.Multiline = true;
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(165, 22);
@@ -216,7 +217,7 @@ namespace CourseWork
             // textBoxRating
             // 
             this.textBoxRating.Location = new System.Drawing.Point(242, 52);
-            this.textBoxRating.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRating.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRating.Multiline = true;
             this.textBoxRating.Name = "textBoxRating";
             this.textBoxRating.Size = new System.Drawing.Size(165, 22);
@@ -226,7 +227,7 @@ namespace CourseWork
             // textBoxContRat
             // 
             this.textBoxContRat.Location = new System.Drawing.Point(242, 76);
-            this.textBoxContRat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxContRat.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxContRat.Multiline = true;
             this.textBoxContRat.Name = "textBoxContRat";
             this.textBoxContRat.Size = new System.Drawing.Size(165, 22);
@@ -236,7 +237,7 @@ namespace CourseWork
             // 
             this.textBoxId.Enabled = false;
             this.textBoxId.Location = new System.Drawing.Point(242, 4);
-            this.textBoxId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxId.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxId.Multiline = true;
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(165, 22);
@@ -312,7 +313,7 @@ namespace CourseWork
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(87, 84);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -325,7 +326,7 @@ namespace CourseWork
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Location = new System.Drawing.Point(434, 430);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(325, 128);
             this.panel3.TabIndex = 3;
@@ -337,7 +338,7 @@ namespace CourseWork
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnEdit.Location = new System.Drawing.Point(87, 53);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(153, 45);
             this.btnEdit.TabIndex = 2;
@@ -352,7 +353,7 @@ namespace CourseWork
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDelete.Location = new System.Drawing.Point(169, 4);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(153, 45);
             this.btnDelete.TabIndex = 1;
@@ -367,7 +368,7 @@ namespace CourseWork
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAdd.Location = new System.Drawing.Point(3, 4);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(153, 45);
             this.btnAdd.TabIndex = 0;
@@ -390,19 +391,19 @@ namespace CourseWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 570);
+            this.ClientSize = new System.Drawing.Size(767, 564);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Movies";
             this.Text = "Movies";
             this.Load += new System.EventHandler(this.Movies_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -423,7 +424,7 @@ namespace CourseWork
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox btnBack;
         private System.Windows.Forms.PictureBox btnClear;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;

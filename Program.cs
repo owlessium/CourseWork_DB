@@ -16,7 +16,7 @@ namespace CourseWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Movies());
+            Application.Run(new Menu());
         }
     }
 }

@@ -24,5 +24,13 @@ namespace CourseWork
             movies.ShowDialog();
             this.Show();
         }
+
+        private void btnCritics_Click(object sender, EventArgs e)
+        {
+            FilmCritics filmCritics = new FilmCritics();
+            this.Hide();
+            filmCritics.ShowDialog();
+            this.Show();
+        }
     }
 }
