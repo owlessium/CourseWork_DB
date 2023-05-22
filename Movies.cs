@@ -188,7 +188,7 @@ namespace CourseWork
             int duration = -1;
 
 
-            if (int.TryParse(textBoxDuration.Text, out duration) || title != string.Empty || rating != string.Empty || content_rating != string.Empty || genre != string.Empty)
+            if (int.TryParse(textBoxDuration.Text, out duration) && title != string.Empty &&  rating != string.Empty && content_rating != string.Empty && genre != string.Empty)
             {
                 try
                 {
@@ -201,12 +201,8 @@ namespace CourseWork
                 }
                 catch
                 {
-                    MessageBox.Show("Record not edited! Incorrect rating format! You should use a dot!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Record not edited!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else if (!(int.TryParse(textBoxDuration.Text, out duration)) && (duration.ToString() == string.Empty))
-            {
-                MessageBox.Show("Record not edited! Incorrect duration format!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -221,6 +217,25 @@ namespace CourseWork
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void textBoxRating_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // разрешить ввод цифр, точки и запятой
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)
+                && (e.KeyChar != '.') && (e.KeyChar != ','))
+            { 
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') || (e.KeyChar == ','))
+            {
+                e.KeyChar = '.';
+                if ((sender as TextBox).Text.IndexOf('.') > -1 || (sender as TextBox).Text.IndexOf(',') > -1)
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

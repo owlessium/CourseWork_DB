@@ -36,6 +36,7 @@ namespace CourseWork
             this.panelButtons = new System.Windows.Forms.Panel();
             this.panelNote = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelTop = new System.Windows.Forms.Panel();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureSearch = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.PictureBox();
@@ -58,7 +59,6 @@ namespace CourseWork
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.panelTop = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,10 +71,11 @@ namespace CourseWork
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(1, 2);
+            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1265, 918);
+            this.tabControl1.Size = new System.Drawing.Size(843, 597);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -84,10 +85,11 @@ namespace CourseWork
             this.tabPage1.Controls.Add(this.panelNote);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.panelTop);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1257, 885);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(835, 571);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -96,23 +98,26 @@ namespace CourseWork
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(873, 552);
+            this.label1.Location = new System.Drawing.Point(582, 359);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 32);
+            this.label1.Size = new System.Drawing.Size(0, 24);
             this.label1.TabIndex = 4;
             // 
             // panelButtons
             // 
-            this.panelButtons.Location = new System.Drawing.Point(741, 597);
+            this.panelButtons.Location = new System.Drawing.Point(494, 388);
+            this.panelButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(508, 180);
+            this.panelButtons.Size = new System.Drawing.Size(339, 117);
             this.panelButtons.TabIndex = 3;
             // 
             // panelNote
             // 
-            this.panelNote.Location = new System.Drawing.Point(7, 535);
+            this.panelNote.Location = new System.Drawing.Point(5, 348);
+            this.panelNote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelNote.Name = "panelNote";
-            this.panelNote.Size = new System.Drawing.Size(727, 330);
+            this.panelNote.Size = new System.Drawing.Size(485, 214);
             this.panelNote.TabIndex = 2;
             // 
             // dataGridView1
@@ -120,14 +125,24 @@ namespace CourseWork
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 71);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 46);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1251, 457);
+            this.dataGridView1.Size = new System.Drawing.Size(834, 297);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelTop.Location = new System.Drawing.Point(2, 4);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(834, 38);
+            this.panelTop.TabIndex = 0;
             // 
             // textBox_search
             // 
@@ -237,35 +252,35 @@ namespace CourseWork
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(336, 65);
             this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(286, 26);
+            this.textBoxTitle.Size = new System.Drawing.Size(286, 20);
             this.textBoxTitle.TabIndex = 10;
             // 
             // textBoxRating
             // 
             this.textBoxRating.Location = new System.Drawing.Point(336, 110);
             this.textBoxRating.Name = "textBoxRating";
-            this.textBoxRating.Size = new System.Drawing.Size(286, 26);
+            this.textBoxRating.Size = new System.Drawing.Size(286, 20);
             this.textBoxRating.TabIndex = 11;
             // 
             // textBoxDuration
             // 
             this.textBoxDuration.Location = new System.Drawing.Point(336, 250);
             this.textBoxDuration.Name = "textBoxDuration";
-            this.textBoxDuration.Size = new System.Drawing.Size(286, 26);
+            this.textBoxDuration.Size = new System.Drawing.Size(286, 20);
             this.textBoxDuration.TabIndex = 14;
             // 
             // textBoxContRat
             // 
             this.textBoxContRat.Location = new System.Drawing.Point(336, 157);
             this.textBoxContRat.Name = "textBoxContRat";
-            this.textBoxContRat.Size = new System.Drawing.Size(286, 26);
+            this.textBoxContRat.Size = new System.Drawing.Size(286, 20);
             this.textBoxContRat.TabIndex = 15;
             // 
             // textBoxGenre
             // 
             this.textBoxGenre.Location = new System.Drawing.Point(336, 204);
             this.textBoxGenre.Name = "textBoxGenre";
-            this.textBoxGenre.Size = new System.Drawing.Size(286, 26);
+            this.textBoxGenre.Size = new System.Drawing.Size(286, 20);
             this.textBoxGenre.TabIndex = 16;
             // 
             // textBoxId
@@ -273,7 +288,7 @@ namespace CourseWork
             this.textBoxId.Enabled = false;
             this.textBoxId.Location = new System.Drawing.Point(336, 24);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(286, 26);
+            this.textBoxId.Size = new System.Drawing.Size(286, 20);
             this.textBoxId.TabIndex = 17;
             // 
             // labelId
@@ -333,20 +348,13 @@ namespace CourseWork
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // panelTop
-            // 
-            this.panelTop.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panelTop.Location = new System.Drawing.Point(3, 6);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1251, 59);
-            this.panelTop.TabIndex = 0;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 899);
+            this.ClientSize = new System.Drawing.Size(845, 584);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
