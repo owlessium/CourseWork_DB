@@ -32,10 +32,12 @@ namespace CourseWork
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormForUsers));
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnGetAllMyWatchedFilms = new System.Windows.Forms.Button();
             this.btnComment = new System.Windows.Forms.Button();
             this.btnWatchThisFilm = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxWatch = new System.Windows.Forms.TextBox();
+            this.labelWatch = new System.Windows.Forms.Label();
             this.textBoxGenre = new System.Windows.Forms.TextBox();
             this.textBoxDuration = new System.Windows.Forms.TextBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
@@ -58,8 +60,7 @@ namespace CourseWork
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxComment = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.labelWatch = new System.Windows.Forms.Label();
-            this.textBoxWatch = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -82,26 +83,27 @@ namespace CourseWork
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnEdit);
+            this.panel3.Controls.Add(this.btnGetAllMyWatchedFilms);
             this.panel3.Controls.Add(this.btnComment);
             this.panel3.Controls.Add(this.btnWatchThisFilm);
             this.panel3.Location = new System.Drawing.Point(650, 661);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(488, 197);
+            this.panel3.Size = new System.Drawing.Size(488, 366);
             this.panel3.TabIndex = 8;
             // 
-            // btnEdit
+            // btnGetAllMyWatchedFilms
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEdit.Location = new System.Drawing.Point(130, 82);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(230, 69);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Edit record";
-            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnGetAllMyWatchedFilms.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnGetAllMyWatchedFilms.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGetAllMyWatchedFilms.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGetAllMyWatchedFilms.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGetAllMyWatchedFilms.Location = new System.Drawing.Point(4, 120);
+            this.btnGetAllMyWatchedFilms.Name = "btnGetAllMyWatchedFilms";
+            this.btnGetAllMyWatchedFilms.Size = new System.Drawing.Size(230, 112);
+            this.btnGetAllMyWatchedFilms.TabIndex = 2;
+            this.btnGetAllMyWatchedFilms.Text = "View a list of all the movies I\'ve watched";
+            this.btnGetAllMyWatchedFilms.UseVisualStyleBackColor = false;
+            this.btnGetAllMyWatchedFilms.Click += new System.EventHandler(this.btnGetAllMyWatchedFilms_Click);
             // 
             // btnComment
             // 
@@ -111,7 +113,7 @@ namespace CourseWork
             this.btnComment.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnComment.Location = new System.Drawing.Point(254, 6);
             this.btnComment.Name = "btnComment";
-            this.btnComment.Size = new System.Drawing.Size(230, 69);
+            this.btnComment.Size = new System.Drawing.Size(230, 99);
             this.btnComment.TabIndex = 1;
             this.btnComment.Text = "Comment this film";
             this.btnComment.UseVisualStyleBackColor = false;
@@ -125,7 +127,7 @@ namespace CourseWork
             this.btnWatchThisFilm.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnWatchThisFilm.Location = new System.Drawing.Point(4, 6);
             this.btnWatchThisFilm.Name = "btnWatchThisFilm";
-            this.btnWatchThisFilm.Size = new System.Drawing.Size(230, 69);
+            this.btnWatchThisFilm.Size = new System.Drawing.Size(230, 99);
             this.btnWatchThisFilm.TabIndex = 0;
             this.btnWatchThisFilm.Text = "Watch this film";
             this.btnWatchThisFilm.UseVisualStyleBackColor = false;
@@ -152,6 +154,24 @@ namespace CourseWork
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(632, 276);
             this.panel2.TabIndex = 7;
+            // 
+            // textBoxWatch
+            // 
+            this.textBoxWatch.Enabled = false;
+            this.textBoxWatch.Location = new System.Drawing.Point(363, 230);
+            this.textBoxWatch.Name = "textBoxWatch";
+            this.textBoxWatch.Size = new System.Drawing.Size(246, 26);
+            this.textBoxWatch.TabIndex = 14;
+            // 
+            // labelWatch
+            // 
+            this.labelWatch.AutoSize = true;
+            this.labelWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelWatch.Location = new System.Drawing.Point(140, 223);
+            this.labelWatch.Name = "labelWatch";
+            this.labelWatch.Size = new System.Drawing.Size(95, 32);
+            this.labelWatch.TabIndex = 13;
+            this.labelWatch.Text = "Watch";
             // 
             // textBoxGenre
             // 
@@ -323,6 +343,7 @@ namespace CourseWork
             this.btnRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.TabStop = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pictureBox1
             // 
@@ -341,6 +362,7 @@ namespace CourseWork
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(204, 39);
             this.textBox_search.TabIndex = 1;
+            this.textBox_search.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
             // 
             // label1
             // 
@@ -354,45 +376,41 @@ namespace CourseWork
             // 
             // textBoxComment
             // 
-            this.textBoxComment.Location = new System.Drawing.Point(265, 919);
-            this.textBoxComment.Multiline = true;
+            this.textBoxComment.Location = new System.Drawing.Point(268, 899);
             this.textBoxComment.Name = "textBoxComment";
-            this.textBoxComment.Size = new System.Drawing.Size(337, 128);
+            this.textBoxComment.Size = new System.Drawing.Size(337, 26);
             this.textBoxComment.TabIndex = 10;
+            this.textBoxComment.Visible = false;
+            this.textBoxComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxComment_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.Location = new System.Drawing.Point(12, 916);
+            this.label3.Location = new System.Drawing.Point(15, 896);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(247, 32);
             this.label3.TabIndex = 11;
             this.label3.Text = "Leave a comment:";
+            this.label3.Visible = false;
             // 
-            // labelWatch
+            // label4
             // 
-            this.labelWatch.AutoSize = true;
-            this.labelWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelWatch.Location = new System.Drawing.Point(140, 223);
-            this.labelWatch.Name = "labelWatch";
-            this.labelWatch.Size = new System.Drawing.Size(95, 32);
-            this.labelWatch.TabIndex = 13;
-            this.labelWatch.Text = "Watch";
-            // 
-            // textBoxWatch
-            // 
-            this.textBoxWatch.Enabled = false;
-            this.textBoxWatch.Location = new System.Drawing.Point(363, 230);
-            this.textBoxWatch.Name = "textBoxWatch";
-            this.textBoxWatch.Size = new System.Drawing.Size(246, 26);
-            this.textBoxWatch.TabIndex = 14;
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(28, 930);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(195, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "maximum of 50 characters";
+            this.label4.Visible = false;
             // 
             // FormForUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 1051);
+            this.ClientSize = new System.Drawing.Size(1157, 1060);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxComment);
             this.Controls.Add(this.label2);
@@ -422,7 +440,7 @@ namespace CourseWork
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnGetAllMyWatchedFilms;
         private System.Windows.Forms.Button btnComment;
         private System.Windows.Forms.Button btnWatchThisFilm;
         private System.Windows.Forms.Panel panel2;
@@ -450,5 +468,6 @@ namespace CourseWork
         private System.Windows.Forms.Label labelWatch;
         private System.Windows.Forms.TextBox textBoxComment;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

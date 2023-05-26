@@ -159,6 +159,11 @@ namespace CourseWork
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text == "")
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             dataBase.openConnection();
 
             var id = Convert.ToInt32(textBoxId.Text);
@@ -174,6 +179,11 @@ namespace CourseWork
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text == "")
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             int id = Convert.ToInt32(textBoxId.Text);
             dataBase.openConnection();
 

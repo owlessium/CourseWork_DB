@@ -31,8 +31,6 @@ namespace CourseWork
         {
             this.btnMovies = new System.Windows.Forms.Button();
             this.btnCritics = new System.Windows.Forms.Button();
-            this.btnWatchings = new System.Windows.Forms.Button();
-            this.btnComments = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -65,32 +63,6 @@ namespace CourseWork
             this.btnCritics.UseVisualStyleBackColor = false;
             this.btnCritics.Click += new System.EventHandler(this.btnCritics_Click);
             // 
-            // btnWatchings
-            // 
-            this.btnWatchings.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnWatchings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWatchings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnWatchings.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnWatchings.Location = new System.Drawing.Point(16, 163);
-            this.btnWatchings.Name = "btnWatchings";
-            this.btnWatchings.Size = new System.Drawing.Size(230, 69);
-            this.btnWatchings.TabIndex = 3;
-            this.btnWatchings.Text = "Watchings";
-            this.btnWatchings.UseVisualStyleBackColor = false;
-            // 
-            // btnComments
-            // 
-            this.btnComments.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnComments.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnComments.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnComments.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnComments.Location = new System.Drawing.Point(288, 163);
-            this.btnComments.Name = "btnComments";
-            this.btnComments.Size = new System.Drawing.Size(230, 69);
-            this.btnComments.TabIndex = 4;
-            this.btnComments.Text = "Comments";
-            this.btnComments.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -107,7 +79,7 @@ namespace CourseWork
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(16, 257);
+            this.button1.Location = new System.Drawing.Point(159, 160);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(230, 69);
             this.button1.TabIndex = 6;
@@ -119,11 +91,9 @@ namespace CourseWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 338);
+            this.ClientSize = new System.Drawing.Size(536, 254);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnComments);
-            this.Controls.Add(this.btnWatchings);
             this.Controls.Add(this.btnCritics);
             this.Controls.Add(this.btnMovies);
             this.Name = "Menu";
@@ -137,8 +107,6 @@ namespace CourseWork
 
         private System.Windows.Forms.Button btnMovies;
         private System.Windows.Forms.Button btnCritics;
-        private System.Windows.Forms.Button btnWatchings;
-        private System.Windows.Forms.Button btnComments;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
     }

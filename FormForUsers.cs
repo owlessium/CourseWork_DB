@@ -48,6 +48,7 @@ namespace CourseWork
             textBoxGenre.Text = "";
             textBoxDuration.Text = "";
             textBoxWatch.Text = "";
+            textBoxComment.Text = "";
         }
 
         private void RefreshDataGrid(DataGridView dgw)
@@ -90,8 +91,57 @@ namespace CourseWork
                 textBoxContRat.Text = row.Cells[4].Value.ToString();
                 textBoxGenre.Text = row.Cells[3].Value.ToString();
                 textBoxWatch.Text = GetWatched(dataGridView1);
+                if (textBoxWatch.Text == "Not watched")
+                {
+                    label3.Visible = false;
+                    label4.Visible = false;
+                    textBoxComment.Visible = false;
+                }
                 textBoxComment.Text = GetComment(dataGridView1);
+                if (textBoxWatch.Text == "Watched")
+                {
+                    label3.Visible = true;
+                    label4.Visible = true;
+                    textBoxComment.Visible = true;
+                    if (textBoxComment.Text != "")
+                    {
+                        btnComment.Text = "Change my comment";
+                        label3.Text = "Your comment:";
+                    }
+                    else
+                    {
+
+                        label3.Text = "Leave a comment:";
+                        btnComment.Text = "Comment this film";
+                    }
+                }
+
             }
+        }
+
+        private void Search(DataGridView dgw)
+        {
+            dgw.Rows.Clear();
+
+            string searchingString = $"select * from Movies_table where concat (rating, title, content_rating, genre, duration) like '%" + textBox_search.Text + "%'";
+
+            SqlCommand command = new SqlCommand(searchingString, dataBase.getConnection());
+            dataBase.openConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ReadSingleRow(dgw, reader);
+            }
+
+            reader.Close();
+            RefreshDataGrid(dataGridView1);
+        }
+
+        private void textBox_search_TextChanged(object sender, EventArgs e)
+        {
+            Search(dataGridView1);
         }
 
         private string GetWatched(DataGridView dgw)
@@ -116,11 +166,16 @@ namespace CourseWork
             return "Not watched";
         }
 
+        private static String ReadSingleRow(IDataRecord record)
+        {
+            return record[0].ToString();
+        }
+
         private string GetComment(DataGridView dgw)
         {
-            String result = "";
+            String result = "ccc";
             var id_film = textBoxId.Text;
-            string queryString = $"select * from Comment where id_user = '{myID}' AND id_film = '{id_film}'";
+            string queryString = $"select comment from Comment_Table where id_user = '{myID}' AND id_film = '{id_film}'";
 
             SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
 
@@ -128,10 +183,10 @@ namespace CourseWork
 
             SqlDataReader reader = command.ExecuteReader();
 
-            if (reader.HasRows)
+            while (reader.Read())
             {
-                Console.WriteLine("!!!!!!" + reader[0]);
-                result = reader[0].ToString();
+                result = ReadSingleRow((IDataRecord)reader);
+                reader.Close();
                 dataBase.closeConnection();
                 return result;
             }
@@ -144,25 +199,44 @@ namespace CourseWork
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshDataGrid(dataGridView1);
+            btnWatchThisFilm.Text = "Watch this film";
             ClearFields();
         }
 
         private void btnWatchThisFilm_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text == "")
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             dataBase.openConnection();
 
             var id_film = textBoxId.Text;
 
-            if(id_film != string.Empty)
+            if (id_film != string.Empty)
             {
+
                 try
                 {
-                    var addQuery = $"insert into Watching (id_user, id_film) values ('{myID}', '{id_film}')";
+                    if (btnWatchThisFilm.Text == "Watch this film")
+                    {
+                        var addQuery = $"insert into Watching (id_user, id_film) values ('{myID}', '{id_film}')";
 
-                    var command = new SqlCommand(addQuery, dataBase.getConnection());
-                    command.ExecuteNonQuery();
+                        var command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
 
-                    MessageBox.Show("You've seen this movie!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("You've seen this movie!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var deleteQuery = $"delete from Watching where id_user = '{myID}' AND id_film = '{id_film}'";
+                        var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("You've seen this movie!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
                 catch
                 {
@@ -181,7 +255,92 @@ namespace CourseWork
 
         private void btnComment_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text == "")
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (textBoxWatch.Text == "Not watched")
+            {
+                MessageBox.Show("You can't leave comments on movies that you haven't watched yet!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            dataBase.openConnection();
+
+            var id_film = textBoxId.Text;
+            String comment = textBoxComment.Text;
+
+            if (id_film != string.Empty)
+            {
+                try
+                {
+                    if (label3.Text == "Leave a comment:")
+                    {
+                        var addQuery = $"insert into Comment_Table (id_user, id_film, comment) values ('{myID}', '{id_film}', '{comment}')";
+
+                        var command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
+
+                        MessageBox.Show("You left a comment on the movie!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var addQuery = $"update Comment_Table set comment = '{comment}' where id_user = '{myID}' AND id_film = '{id_film}'";
+                        var command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
+
+                        MessageBox.Show("You have changed the comment to the movie!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    Console.WriteLine(exp);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            dataBase.closeConnection();
+            RefreshDataGrid(dataGridView1);
+            ClearFields();
+        }
+
+        private void btnGetAllMyWatchedFilms_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView1.Rows.Clear();
+                var addQuery = $"SELECT Movies_table.* FROM Watching JOIN Movies_table ON Watching.id_film = Movies_table.id_film WHERE Watching.id_user = '{myID}' ";
+
+                var command = new SqlCommand(addQuery, dataBase.getConnection());
+                dataBase.openConnection(); SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ReadSingleRow(dataGridView1, reader);
+                }
+
+                reader.Close();
+                dataBase.closeConnection();
+                btnWatchThisFilm.Text = "Delete this film from my watched";
+
+            }
+            catch
+            {
+                MessageBox.Show("Error", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void textBoxComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBoxComment.Text.Length >= 50 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

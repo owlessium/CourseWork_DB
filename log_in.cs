@@ -38,7 +38,7 @@ namespace CourseWork
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            String queryString = $"select id_user, login_user, password_user, role from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+            String queryString = $"select * from register where login_user = '{loginUser}' and password_user = '{passUser}'";
 
             SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
 
@@ -49,10 +49,26 @@ namespace CourseWork
             {
                 MessageBox.Show("You have successfully logged in!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 String role = table.Rows[0].Field<string>(3);
-                Form1 frm1 = new Form1();
-                this.Hide();
-                frm1.ShowDialog();
-                this.Show();
+                int idUser = int.Parse(table.Rows[0].Field<int>(0).ToString());
+                if (role == "admin")
+                {
+                    Menu menu = new Menu();
+                    this.Hide();
+                    menu.ShowDialog();
+                    this.Show();
+                } else if (role == "user")
+                {
+                    FormForUsers usersForm = new FormForUsers(idUser);
+                    this.Hide();
+                    usersForm.ShowDialog();
+                    this.Show();
+                } else if (role == "critic")
+                {
+                    FormForUsers usersForm = new FormForUsers(idUser);
+                    this.Hide();
+                    usersForm.ShowDialog();
+                    this.Show();
+                }
             }
             else
                 MessageBox.Show("There is no such account!", "The account doesn't exist!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
