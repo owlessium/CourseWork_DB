@@ -40,5 +40,10 @@ namespace CourseWork
             users.ShowDialog();
             this.Show();
         }
+
+        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -48,26 +48,27 @@ namespace CourseWork
             if (table.Rows.Count == 1)
             {
                 MessageBox.Show("You have successfully logged in!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                String nick = table.Rows[0].Field<string>(1);
                 String role = table.Rows[0].Field<string>(3);
-                int idUser = int.Parse(table.Rows[0].Field<int>(0).ToString());
+                
+
                 if (role == "admin")
                 {
                     Menu menu = new Menu();
                     this.Hide();
                     menu.ShowDialog();
-                    this.Show();
                 } else if (role == "user")
                 {
-                    FormForUsers usersForm = new FormForUsers(idUser);
+                    int id = int.Parse(GetId(nick));
+                    FormForUsers usersForm = new FormForUsers(id);
                     this.Hide();
                     usersForm.ShowDialog();
-                    this.Show();
                 } else if (role == "critic")
                 {
-                    FormForUsers usersForm = new FormForUsers(idUser);
+                    int id = int.Parse(GetId(nick));
+                    FormForUsers usersForm = new FormForUsers(id);
                     this.Hide();
                     usersForm.ShowDialog();
-                    this.Show();
                 }
             }
             else
@@ -75,11 +76,38 @@ namespace CourseWork
         }
 
 
+        private string GetId(String nick)
+        {
+            String result = "";
+            string queryString = $"select id_user from Users where nickname_user = '{nick}'";
+
+
+            SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                result = ReadSingleRow((IDataRecord)reader);
+            }
+            reader.Close();
+            dataBase.closeConnection();
+            return result;
+        }
+
+        private static String ReadSingleRow(IDataRecord record)
+        {
+            return record[0].ToString();
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             sign_up frm_sign = new sign_up();
-            frm_sign.Show();
             this.Hide();
+            frm_sign.Show();
+            this.Show();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

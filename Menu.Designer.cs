@@ -98,6 +98,7 @@ namespace CourseWork
             this.Controls.Add(this.btnMovies);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

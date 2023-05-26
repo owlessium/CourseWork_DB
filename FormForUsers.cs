@@ -69,6 +69,9 @@ namespace CourseWork
 
             reader.Close();
             dataBase.closeConnection();
+            dataGridView2.Visible = false;
+            btnGetAllMyWatchedFilms.Visible = true;
+            btnGetAllReviewsForThisMovie.Visible = true;
         }
 
         private void FormForUsers_Load(object sender, EventArgs e)
@@ -341,6 +344,60 @@ namespace CourseWork
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnGetAllReviewsForThisMovie_Click(object sender, EventArgs e)
+        {
+            if (textBoxId.Text == "")
+            {
+                MessageBox.Show("No movie is selected!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            btnGetAllMyWatchedFilms.Visible = false;
+            btnGetAllReviewsForThisMovie.Visible = false;
+            dataGridView2.Visible = true;
+            CreateColumnsForReviews();
+            RefreshDataGridForReviews(dataGridView1);
+        }
+
+        private void CreateColumnsForReviews()
+        {
+            dataGridView2.Columns.Add("id_film", "id");
+            dataGridView2.Columns.Add("title", "Название");
+            dataGridView2.Columns.Add("nicname_critic", "Рейтинг");
+            dataGridView2.Columns.Add("text", "Текст рецензии");
+        }
+
+        private void ReadSingleRowForReviews(DataGridView dgv, IDataRecord record)
+        {
+            dgv.Rows.Add(record.GetValue(0), record.GetString(1), record.GetString(2), record.GetString(3));
+        }
+
+        private void RefreshDataGridForReviews(DataGridView dgw)
+        {
+            var id_film = textBoxId.Text;
+            dgw.Rows.Clear();
+            string queryString = $"SELECT Movies_table.id_film, Movies_table.title, Film_critics.nickname_critic, Reviews.text FROM Movies_table JOIN Reviews ON Movies_table.id_film = Reviews.id_film JOIN Film_critics ON Reviews.id_critic = Film_critics.id_critic WHERE Movies_table.id_film = '{id_film}'";
+
+            SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ReadSingleRowForReviews(dataGridView2, reader);
+            }
+
+            reader.Close();
+            dataBase.closeConnection();
+        }
+
+        private void FormForUsers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

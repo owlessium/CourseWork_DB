@@ -90,7 +90,7 @@ namespace CourseWork
 
             dataBase.openConnection();
 
-            if(command.ExecuteNonQuery() == 1)
+            if (loginUser == "" || passUser == "" || roleUser == "")
             {
                 MessageBox.Show("Account successfully created!", "Successfully!");
                 log_in frm_login = new log_in();

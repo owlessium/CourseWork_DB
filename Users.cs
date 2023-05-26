@@ -103,6 +103,10 @@ namespace CourseWork
                         var command = new SqlCommand(addQuery, dataBase.getConnection());
                         command.ExecuteNonQuery();
 
+                        addQuery = $"insert into register (login_user, password_user, role) values ('{nickameUser}', 'egegrrg', 'user')";
+                        command = new SqlCommand(addQuery, dataBase.getConnection());
+                        command.ExecuteNonQuery();
+
                         MessageBox.Show("Record successfully created!", "Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
@@ -156,8 +160,12 @@ namespace CourseWork
             dataBase.openConnection();
 
             var id = Convert.ToInt32(textBoxIdUser.Text);
+            String nick = textBoxNicknameUser.Text;
             var deleteQuery = $"delete from Users where id_user = '{id}'";
             var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+            command.ExecuteNonQuery();
+            deleteQuery = $"delete from register where login_user = '{nick}'";
+            command = new SqlCommand(deleteQuery, dataBase.getConnection());
             command.ExecuteNonQuery();
 
             dataBase.closeConnection();

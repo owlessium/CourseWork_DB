@@ -61,6 +61,8 @@ namespace CourseWork
             this.textBoxComment = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnGetAllReviewsForThisMovie = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -69,6 +71,7 @@ namespace CourseWork
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -83,12 +86,13 @@ namespace CourseWork
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnGetAllReviewsForThisMovie);
             this.panel3.Controls.Add(this.btnGetAllMyWatchedFilms);
             this.panel3.Controls.Add(this.btnComment);
             this.panel3.Controls.Add(this.btnWatchThisFilm);
             this.panel3.Location = new System.Drawing.Point(650, 661);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(488, 366);
+            this.panel3.Size = new System.Drawing.Size(488, 277);
             this.panel3.TabIndex = 8;
             // 
             // btnGetAllMyWatchedFilms
@@ -405,11 +409,40 @@ namespace CourseWork
             this.label4.Text = "maximum of 50 characters";
             this.label4.Visible = false;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(1, 76);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersWidth = 62;
+            this.dataGridView2.RowTemplate.Height = 28;
+            this.dataGridView2.Size = new System.Drawing.Size(1148, 534);
+            this.dataGridView2.TabIndex = 13;
+            this.dataGridView2.Visible = false;
+            // 
+            // btnGetAllReviewsForThisMovie
+            // 
+            this.btnGetAllReviewsForThisMovie.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnGetAllReviewsForThisMovie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGetAllReviewsForThisMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnGetAllReviewsForThisMovie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGetAllReviewsForThisMovie.Location = new System.Drawing.Point(254, 120);
+            this.btnGetAllReviewsForThisMovie.Name = "btnGetAllReviewsForThisMovie";
+            this.btnGetAllReviewsForThisMovie.Size = new System.Drawing.Size(230, 112);
+            this.btnGetAllReviewsForThisMovie.TabIndex = 3;
+            this.btnGetAllReviewsForThisMovie.Text = "Read all the reviews of this movie";
+            this.btnGetAllReviewsForThisMovie.UseVisualStyleBackColor = false;
+            this.btnGetAllReviewsForThisMovie.Click += new System.EventHandler(this.btnGetAllReviewsForThisMovie_Click);
+            // 
             // FormForUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 1060);
+            this.ClientSize = new System.Drawing.Size(1157, 960);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxComment);
@@ -418,8 +451,10 @@ namespace CourseWork
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(1180, 1020);
             this.Name = "FormForUsers";
             this.Text = "FormForUsers";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormForUsers_FormClosed);
             this.Load += new System.EventHandler(this.FormForUsers_Load);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -431,6 +466,7 @@ namespace CourseWork
             ((System.ComponentModel.ISupportInitialize)(this.btnClear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,5 +505,7 @@ namespace CourseWork
         private System.Windows.Forms.TextBox textBoxComment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnGetAllReviewsForThisMovie;
     }
 }
